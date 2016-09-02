@@ -17,4 +17,14 @@ body {
 .center {
   margin: 0 auto;
   text-align: center;
+  display: 50%;
+}
+
+.choice {
+  border: 1px solid gray;
+  background: white;
+  color: gray;
+  padding: 5px;
+  margin: 1px;
+  display: block;
 }
