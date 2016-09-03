@@ -9,6 +9,10 @@ body {
   color: white;
 }
 
+input {
+  padding-right: 5px;
+}
+
 .space {
   margin: 10px;
   padding: 5px;
@@ -17,7 +21,7 @@ body {
 .center {
   margin: 0 auto;
   text-align: center;
-  display: 50%;
+  width: 50%;
 }
 
 .choice {
@@ -27,4 +31,24 @@ body {
   padding: 5px;
   margin: 1px;
   display: block;
+  border-radius: .5em;
+}
+
+.options {
+  margin: 10px 0;
+  padding: 5px;
+  display: inline-block;
+}
+
+.button {
+    background-color: orange;
+    border: none;
+    border-radius: .5em;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
 }

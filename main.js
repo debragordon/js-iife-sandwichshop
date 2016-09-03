@@ -1,25 +1,117 @@
-// alert("the javascript works!");
+// create a function that clears out none when people begin selecting options
 
-// Create a sandwich order form that allows the user to select all the ingredients for a custom deli sandwich. Create a Sandwich module, then create the following as individual modules, using IIFE syntax, to augment Sandwich:
+// create a function that won't allow mulitple choices to include none and true options
 
-// bread
-// meat
-// cheese
-// condiments
-// veggies
-// Your project should have one HTML file that has:
+// create a function that dynamically builds the price as people make choices
 
-// a section of options for each sandwich part
-// the ability to select multiple, or zero, choices for each section (such as turkey and bacon, or "no meat")
-// an empty DOM element into which the final sandwich order and its cost will be inserted
-// The ingredient choices should be stored as JS objects that contain the ingredients as keys and their cost as the value. {"turkey": 0.90, "bacon": 1.50}
+// only show the sandwich order div when the user clicks place order ... when this happens, add the word "TOTAL" to the price div
 
-// Make sure the ingredient objects cannot be accessed by the other modules except through an accessor (getter) method.
+// write the sandwich ingredient list to the dom when they say place order
 
-// Each IIFE should expose, in its public interface, a method named add{ingredient} (e.g. addMeat or addVeggies) that accepts a single argument. That argument's value should be the ingredient selected by the user.
+// click event on the Place Order Button
 
-// You should also create an additional JavaScript file that handles interacting with the form elements and determining which method should be called.
+var selectedBread = document.getElementById("bread-choices");
+var meatChooser = document.getElementById("meat-choices");
+var cheeseSelector = document.getElementById("cheese-choices");
+var veggieChooser = document.getElementById("veggie-choices");
+var extrasChooser = document.getElementById("extra-choices");
+var finalSandwichName = "";
 
-// Don't worry about exposing the prices to the user until you display the final cost. This is just an exercise, not a business model.
+selectedBread.addEventListener('click', breadMaker);
+cheeseSelector.addEventListener('click', cheeseMaker);
+extrasChooser.addEventListener('click', extraMaker);
+veggieChooser.addEventListener('click', veggieMaker);
+meatChooser.addEventListener('click', meatMaker);
 
-// Here's some simple boilerplate code to get you started.
+function domWriterShow () {
+  document.getElementById("bill").innerHTML = "<p>$" + yourSandwich.getTotalSandwichPrice() +"</p>";
+}
+
+function domWriterShowLater () {
+  document.getElementById("sandwich").innerHTML = "<p>" + finalSandwichName +"</p>";
+}
+
+function breadMaker (b) {
+  var breadChoice = b.target.attributes.value;
+  if (breadChoice){
+    yourSandwich.setBread(breadChoice.value);
+
+    domWriterShow();
+  }
+}
+
+function cheeseMaker (c) {
+  var cheeseChoice = c.target.attributes.value;
+  if (cheeseChoice){
+    yourSandwich.setCheese(cheeseChoice.value);
+
+    if (cheeseChoice.value === "None" && c.target.checked) {
+      noneChecked(c.currentTarget.id);
+    } else {
+      somethingChecked(c.currentTarget.id);
+    }
+    domWriterShow();
+  }
+}
+
+function extraMaker (c) {
+  var extraChoice = c.target.attributes.value;
+  if (extraChoice){
+    yourSandwich.setExtra(extraChoice.value);
+
+    if (extraChoice.value === "None" && c.target.checked) {
+      noneChecked(c.currentTarget.id);
+    } else {
+      somethingChecked(c.currentTarget.id);
+    }
+    domWriterShow();
+  }
+}
+
+function veggieMaker (c) {
+  var veggieChoice = c.target.attributes.value;
+  if (veggieChoice){
+    yourSandwich.setVeggie(veggieChoice.value);
+
+    if (veggieChoice.value === "None" && c.target.checked) {
+      noneChecked(c.currentTarget.id);
+    } else {
+      somethingChecked(c.currentTarget.id);
+    }
+    domWriterShow();
+  }
+}
+
+function meatMaker (c) {
+  var meatChoice = c.target.attributes.value;
+  if (meatChoice){
+    yourSandwich.setMeat(meatChoice.value);
+
+    if (meatChoice.value === "None" && c.target.checked) {
+      noneChecked(c.currentTarget.id);
+    } else {
+      somethingChecked(c.currentTarget.id);
+    }
+    domWriterShow();
+  }
+}
+
+function noneChecked (containerId) {
+var checks = document.querySelectorAll('#' + containerId + ' input[type="checkbox"]');
+    for(var i =0; i< checks.length;i++){
+        var check = checks[i];
+        if(!check.disabled && check.getAttribute("value") != "None"){
+            check.checked = false;
+        }
+    }
+}
+
+function somethingChecked (containerId) {
+var checks = document.querySelectorAll('#' + containerId + ' input[type="checkbox"]');
+    for(var i =0; i< checks.length;i++){
+        var check = checks[i];
+        if(!check.disabled && check.getAttribute("value") == "None"){
+            check.checked = false;
+        }
+    }
+}
