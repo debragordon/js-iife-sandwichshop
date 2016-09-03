@@ -41,14 +41,22 @@ input {
 }
 
 .button {
-    background-color: orange;
-    border: none;
-    border-radius: .5em;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px;
+  background-color: orange;
+  border: none;
+  border-radius: .5em;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.show {
+  display: block;
 }
