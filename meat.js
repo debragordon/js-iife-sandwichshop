@@ -4,11 +4,15 @@ var yourSandwich = ( function (meat){
     "Turkey": 3.00,
     "Pepperoni": 2.50,
     "Bologne": 2.00,
-    "Chick": 2.50,
+    "Chicken": 2.50,
     "None": 0,
   }
 
  var selectedMeats = [];
+
+  meat.getSelectedMeats = function () {
+    return selectedMeats;
+  }
 
   meat.setMeat = function(choice){
     var index = selectedMeats.indexOf(choice);

@@ -1,35 +1,33 @@
-// create a function that clears out none when people begin selecting options
-
-// create a function that won't allow mulitple choices to include none and true options
-
-// create a function that dynamically builds the price as people make choices
-
-// only show the sandwich order div when the user clicks place order ... when this happens, add the word "TOTAL" to the price div
-
-// write the sandwich ingredient list to the dom when they say place order
-
-// click event on the Place Order Button
-
 var selectedBread = document.getElementById("bread-choices");
 var meatChooser = document.getElementById("meat-choices");
 var cheeseSelector = document.getElementById("cheese-choices");
 var veggieChooser = document.getElementById("veggie-choices");
 var extrasChooser = document.getElementById("extra-choices");
-var finalSandwichName = "";
+var orderName = document.getElementById("order");
 
 selectedBread.addEventListener('click', breadMaker);
 cheeseSelector.addEventListener('click', cheeseMaker);
 extrasChooser.addEventListener('click', extraMaker);
 veggieChooser.addEventListener('click', veggieMaker);
 meatChooser.addEventListener('click', meatMaker);
+orderName.addEventListener('click', domWriterShowLater)
 
 function domWriterShow () {
   document.getElementById("bill").innerHTML = "<p>$" + yourSandwich.getTotalSandwichPrice() +"</p>";
 }
 
 function domWriterShowLater () {
-  document.getElementById("sandwich").innerHTML = "<p>" + finalSandwichName +"</p>";
+  document.getElementById("sandwich").innerHTML = "<p>You Ordered (sandwich name): " + yourSandwich.getSandwichName() +"</p>";
+  document.getElementById("bill").innerHTML = "<p>Total $" + yourSandwich.getTotalSandwichPrice() +"</p>";
+  toggle_visibility("sandwich");
+
 }
+
+function toggle_visibility(id) {
+     document.getElementById(id).classList.remove("hidden");
+     document.getElementById(id).classList.add("show");
+  }
+
 
 function breadMaker (b) {
   var breadChoice = b.target.attributes.value;
