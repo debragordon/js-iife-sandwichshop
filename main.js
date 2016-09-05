@@ -17,10 +17,9 @@ function domWriterShow () {
 }
 
 function domWriterShowLater () {
-  document.getElementById("sandwich").innerHTML = "<p>You Ordered (sandwich name): " + yourSandwich.getSandwichName() +"</p>";
+  document.getElementById("sandwich").innerHTML = "<p>You Ordered: " + yourSandwich.getSandwichName() +"</p>";
   document.getElementById("bill").innerHTML = "<p>Total $" + yourSandwich.getTotalSandwichPrice() +"</p>";
   toggle_visibility("sandwich");
-
 }
 
 function toggle_visibility(id) {
